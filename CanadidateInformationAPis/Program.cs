@@ -1,3 +1,4 @@
+using CanadidateInformationAPis;
 using CanadidateInformationAPis.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,5 +29,13 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<DataContext>();
+    context.Database.Migrate();
+    Seeder.Initialize(context);
+}
 
 app.Run();
