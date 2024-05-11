@@ -1,5 +1,7 @@
 using CanadidateInformationAPis;
 using CanadidateInformationAPis.Data;
+using CanadidateInformationAPis.Interfaces;
+using CanadidateInformationAPis.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -13,7 +15,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options =>
         options.UseSqlServer(
-            builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Configuration.GetConnectionString("Default")));
+builder.Services.AddScoped<ICandidateRepository, CanadidateRepository>();
 
 var app = builder.Build();
 
