@@ -17,13 +17,13 @@ namespace CanadidateInformationAPis.Models
         public string LastName { get; set; }
 
         [Phone]
-        public string PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
 
-        public string BestCallTime { get; set; }
+        public string? BestCallTime { get; set; }
 
-        public string LinkedInURL { get; set; }
+        public string? LinkedInURL { get; set; }
 
-        public string GitHubURL { get; set; }
+        public string? GitHubURL { get; set; }
 
         [Required]
         public string Comment { get; set; }
